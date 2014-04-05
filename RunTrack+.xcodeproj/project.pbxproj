@@ -22,6 +22,15 @@
 		49BC2B1E18EA07C50033C043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC2AFD18EA07C50033C043 /* UIKit.framework */; };
 		49BC2B2618EA07C50033C043 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49BC2B2418EA07C50033C043 /* InfoPlist.strings */; };
 		49BC2B2818EA07C50033C043 /* RunTrack_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BC2B2718EA07C50033C043 /* RunTrack_Tests.m */; };
+		49E6A8A118F0885800F8DB92 /* AWSSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8A018F0885800F8DB92 /* AWSSettingsView.m */; };
+		49E6A8A418F0896300F8DB92 /* AWSWeightSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8A318F0896300F8DB92 /* AWSWeightSettingsView.m */; };
+		49E6A8A718F0897500F8DB92 /* AWSNewDistanceWorkoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8A618F0897500F8DB92 /* AWSNewDistanceWorkoutView.m */; };
+		49E6A8AA18F0898300F8DB92 /* AWSNewTimeWorkoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8A918F0898300F8DB92 /* AWSNewTimeWorkoutView.m */; };
+		49E6A8AD18F0899F00F8DB92 /* AWSNewCalorieWorkoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8AC18F0899F00F8DB92 /* AWSNewCalorieWorkoutView.m */; };
+		49E6A8B018F089AC00F8DB92 /* AWSNewFreeWorkoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8AF18F089AC00F8DB92 /* AWSNewFreeWorkoutView.m */; };
+		49E6A8B318F089BA00F8DB92 /* AWSWorkoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8B218F089BA00F8DB92 /* AWSWorkoutView.m */; };
+		49E6A8B618F089C600F8DB92 /* AWSFreeWorkoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8B518F089C600F8DB92 /* AWSFreeWorkoutView.m */; };
+		49F61C6118EF445A0077E70F /* AWSVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F61C6018EF445A0077E70F /* AWSVariables.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +65,24 @@
 		49BC2B2318EA07C50033C043 /* RunTrack+Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RunTrack+Tests-Info.plist"; sourceTree = "<group>"; };
 		49BC2B2518EA07C50033C043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49BC2B2718EA07C50033C043 /* RunTrack_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTrack_Tests.m; sourceTree = "<group>"; };
+		49E6A89F18F0885800F8DB92 /* AWSSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSettingsView.h; sourceTree = "<group>"; };
+		49E6A8A018F0885800F8DB92 /* AWSSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSettingsView.m; sourceTree = "<group>"; };
+		49E6A8A218F0896300F8DB92 /* AWSWeightSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSWeightSettingsView.h; sourceTree = "<group>"; };
+		49E6A8A318F0896300F8DB92 /* AWSWeightSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSWeightSettingsView.m; sourceTree = "<group>"; };
+		49E6A8A518F0897500F8DB92 /* AWSNewDistanceWorkoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNewDistanceWorkoutView.h; sourceTree = "<group>"; };
+		49E6A8A618F0897500F8DB92 /* AWSNewDistanceWorkoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNewDistanceWorkoutView.m; sourceTree = "<group>"; };
+		49E6A8A818F0898300F8DB92 /* AWSNewTimeWorkoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNewTimeWorkoutView.h; sourceTree = "<group>"; };
+		49E6A8A918F0898300F8DB92 /* AWSNewTimeWorkoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNewTimeWorkoutView.m; sourceTree = "<group>"; };
+		49E6A8AB18F0899F00F8DB92 /* AWSNewCalorieWorkoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNewCalorieWorkoutView.h; sourceTree = "<group>"; };
+		49E6A8AC18F0899F00F8DB92 /* AWSNewCalorieWorkoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNewCalorieWorkoutView.m; sourceTree = "<group>"; };
+		49E6A8AE18F089AC00F8DB92 /* AWSNewFreeWorkoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNewFreeWorkoutView.h; sourceTree = "<group>"; };
+		49E6A8AF18F089AC00F8DB92 /* AWSNewFreeWorkoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNewFreeWorkoutView.m; sourceTree = "<group>"; };
+		49E6A8B118F089BA00F8DB92 /* AWSWorkoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSWorkoutView.h; sourceTree = "<group>"; };
+		49E6A8B218F089BA00F8DB92 /* AWSWorkoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSWorkoutView.m; sourceTree = "<group>"; };
+		49E6A8B418F089C600F8DB92 /* AWSFreeWorkoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFreeWorkoutView.h; sourceTree = "<group>"; };
+		49E6A8B518F089C600F8DB92 /* AWSFreeWorkoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFreeWorkoutView.m; sourceTree = "<group>"; };
+		49F61C5F18EF445A0077E70F /* AWSVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSVariables.h; sourceTree = "<group>"; };
+		49F61C6018EF445A0077E70F /* AWSVariables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSVariables.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +145,24 @@
 				49BC2B0818EA07C50033C043 /* AWSAppDelegate.h */,
 				49BC2B0918EA07C50033C043 /* AWSAppDelegate.m */,
 				49BC2B0B18EA07C50033C043 /* Main.storyboard */,
+				49E6A8B418F089C600F8DB92 /* AWSFreeWorkoutView.h */,
+				49E6A8B518F089C600F8DB92 /* AWSFreeWorkoutView.m */,
+				49E6A8B118F089BA00F8DB92 /* AWSWorkoutView.h */,
+				49E6A8B218F089BA00F8DB92 /* AWSWorkoutView.m */,
+				49E6A8AE18F089AC00F8DB92 /* AWSNewFreeWorkoutView.h */,
+				49E6A8AF18F089AC00F8DB92 /* AWSNewFreeWorkoutView.m */,
+				49E6A8AB18F0899F00F8DB92 /* AWSNewCalorieWorkoutView.h */,
+				49E6A8AC18F0899F00F8DB92 /* AWSNewCalorieWorkoutView.m */,
+				49E6A8A818F0898300F8DB92 /* AWSNewTimeWorkoutView.h */,
+				49E6A8A918F0898300F8DB92 /* AWSNewTimeWorkoutView.m */,
+				49E6A8A518F0897500F8DB92 /* AWSNewDistanceWorkoutView.h */,
+				49E6A8A618F0897500F8DB92 /* AWSNewDistanceWorkoutView.m */,
+				49E6A8A218F0896300F8DB92 /* AWSWeightSettingsView.h */,
+				49E6A8A318F0896300F8DB92 /* AWSWeightSettingsView.m */,
+				49E6A89F18F0885800F8DB92 /* AWSSettingsView.h */,
+				49E6A8A018F0885800F8DB92 /* AWSSettingsView.m */,
+				49F61C5F18EF445A0077E70F /* AWSVariables.h */,
+				49F61C6018EF445A0077E70F /* AWSVariables.m */,
 				49BC2B0E18EA07C50033C043 /* AWSMainViewController.h */,
 				49BC2B0F18EA07C50033C043 /* AWSMainViewController.m */,
 				49BC2B1118EA07C50033C043 /* AWSFlipsideViewController.h */,
@@ -202,7 +247,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AWS;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Andrew Shackelford Media";
 				TargetAttributes = {
 					49BC2B1918EA07C50033C043 = {
@@ -255,9 +300,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E6A8A418F0896300F8DB92 /* AWSWeightSettingsView.m in Sources */,
 				49BC2B1318EA07C50033C043 /* AWSFlipsideViewController.m in Sources */,
+				49E6A8A118F0885800F8DB92 /* AWSSettingsView.m in Sources */,
 				49BC2B1018EA07C50033C043 /* AWSMainViewController.m in Sources */,
+				49E6A8B318F089BA00F8DB92 /* AWSWorkoutView.m in Sources */,
+				49E6A8A718F0897500F8DB92 /* AWSNewDistanceWorkoutView.m in Sources */,
+				49E6A8AD18F0899F00F8DB92 /* AWSNewCalorieWorkoutView.m in Sources */,
 				49BC2B0A18EA07C50033C043 /* AWSAppDelegate.m in Sources */,
+				49F61C6118EF445A0077E70F /* AWSVariables.m in Sources */,
+				49E6A8AA18F0898300F8DB92 /* AWSNewTimeWorkoutView.m in Sources */,
+				49E6A8B018F089AC00F8DB92 /* AWSNewFreeWorkoutView.m in Sources */,
+				49E6A8B618F089C600F8DB92 /* AWSFreeWorkoutView.m in Sources */,
 				49BC2B0618EA07C50033C043 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,7 +366,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -351,7 +404,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -409,7 +461,6 @@
 		49BC2B2F18EA07C50033C043 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RunTrack+.app/RunTrack+";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -432,7 +483,6 @@
 		49BC2B3018EA07C50033C043 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RunTrack+.app/RunTrack+";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -467,6 +517,7 @@
 				49BC2B2D18EA07C50033C043 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49BC2B2E18EA07C50033C043 /* Build configuration list for PBXNativeTarget "RunTrack+Tests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +526,7 @@
 				49BC2B3018EA07C50033C043 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

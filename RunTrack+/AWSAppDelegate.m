@@ -5,6 +5,7 @@
 //  Created by Andrew Shackelford on 3/31/14.
 //  Copyright (c) 2014 Andrew Shackelford Media. All rights reserved.
 //
+//  App Brand Color is RGB 229, 82, 14
 
 #import "AWSAppDelegate.h"
 
