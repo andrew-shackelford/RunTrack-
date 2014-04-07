@@ -11,6 +11,8 @@
 @implementation AWSVariables
 
 @synthesize units;
+@synthesize weightInPounds;
+@synthesize weightInKilograms;
 
 
 

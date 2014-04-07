@@ -11,6 +11,7 @@
 @interface AWSVariables : NSObject
 
 @property (readwrite, nonatomic) NSString *units;
-@property (readwrite, nonatomic) float *weight;
+@property (readwrite, nonatomic) float weightInPounds;
+@property (readwrite, nonatomic) float weightInKilograms;
 
 @end

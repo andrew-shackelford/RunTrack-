@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AWSWeightSettingsView : UIView <UIPickerViewDataSource,UIPickerViewDelegate>
+@interface AWSWeightSettingsView : UIView <UIPickerViewDataSource,UIPickerViewDelegate> {
+    UILabel *promptLabel;
+}
 
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
+@property (strong, nonatomic) IBOutlet UILabel *promptLabel;
 
 @end
