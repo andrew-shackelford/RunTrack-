@@ -8,6 +8,7 @@
 
 #import "AWSWeightSettingsView.h"
 #import "AWSVariables.h"
+#import "AWSSettingsView.h"
 
 
 @implementation AWSWeightSettingsView
@@ -72,7 +73,7 @@ NSString *KgComponentOne;
     NSString *titleForRow;
     if (component == 0) {
         NSInteger number = row + 1;
-        titleForRow = [NSString stringWithFormat:@"%ld", number];
+        titleForRow = [NSString stringWithFormat:@"%d", number];
     } else  if (row == 0) {
         titleForRow = [NSString stringWithFormat:@".0"];
     } else {
@@ -86,7 +87,7 @@ NSString *KgComponentOne;
 {
     AWSVariables *obj = [[AWSVariables alloc] init];
     NSString *weightString;
-    NSLog(@"Selected Row %ld", row);
+    NSLog(@"Selected Row %d", row);
     if ([currentUnits isEqualToString:@"Metric"]) {
         if (component == 0) {
             KgComponentZero = [[NSNumber numberWithLong:row + 1] stringValue];
@@ -97,15 +98,23 @@ NSString *KgComponentOne;
                 KgComponentOne = @".5";
             }
         }
+        if (KgComponentOne != nil) {
         weightString = [KgComponentZero stringByAppendingString:KgComponentOne];
+        } else {
+            weightString = KgComponentZero;
+        }
         obj.weightInKilograms = [weightString floatValue];
         obj.weightInPounds = [weightString floatValue]*2.20462;
+        
     } else { //units are imperial
         weightString = [[NSNumber numberWithLong:row + 1] stringValue];
         obj.weightInPounds = [weightString floatValue];
         obj.weightInKilograms = [weightString floatValue]*0.453592;
     }
     NSLog(@"Selected weight is: %@", weightString);
+    NSLog(@"weightInPounds is: %.0f", obj.weightInPounds);
+    NSLog(@"weightInKilograms is: %.1f", obj.weightInKilograms);
+    [obj updateWeight:[weightString floatValue]];
 }
 
 

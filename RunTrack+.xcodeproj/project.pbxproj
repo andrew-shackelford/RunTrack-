@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4912DAD218F59A5800C2C78B /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4912DAD118F59A5800C2C78B /* Settings.plist */; };
 		49BC2AFA18EA07C50033C043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC2AF918EA07C50033C043 /* Foundation.framework */; };
 		49BC2AFC18EA07C50033C043 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC2AFB18EA07C50033C043 /* CoreGraphics.framework */; };
 		49BC2AFE18EA07C50033C043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC2AFD18EA07C50033C043 /* UIKit.framework */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4912DAD118F59A5800C2C78B /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		49BC2AF618EA07C40033C043 /* RunTrack+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RunTrack+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BC2AF918EA07C50033C043 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49BC2AFB18EA07C50033C043 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -180,6 +182,7 @@
 				49BC2B0218EA07C50033C043 /* InfoPlist.strings */,
 				49BC2B0518EA07C50033C043 /* main.m */,
 				49BC2B0718EA07C50033C043 /* RunTrack+-Prefix.pch */,
+				4912DAD118F59A5800C2C78B /* Settings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49BC2B1518EA07C50033C043 /* Images.xcassets in Resources */,
+				4912DAD218F59A5800C2C78B /* Settings.plist in Resources */,
 				49BC2B0418EA07C50033C043 /* InfoPlist.strings in Resources */,
 				49BC2B0D18EA07C50033C043 /* Main.storyboard in Resources */,
 			);

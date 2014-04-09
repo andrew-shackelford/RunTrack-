@@ -444,8 +444,18 @@
                                     <segue destination="kcW-cx-38J" kind="modal" modalTransitionStyle="crossDissolve" id="5k2-wM-OVC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjj-Vd-ixS">
+                                <rect key="frame" x="172" y="85" width="109" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="weightLabel" destination="fjj-Vd-ixS" id="KBF-JS-uyR"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="HOV-7A-xkf"/>
                 </viewController>

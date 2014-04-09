@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AWSSettingsView : UIView
+@interface AWSSettingsView : UIView {
+    UILabel *weightLabel;
+}
+@property (strong, nonatomic) IBOutlet UILabel *weightLabel;
 
 @end
