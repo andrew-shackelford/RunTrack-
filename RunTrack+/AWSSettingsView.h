@@ -12,5 +12,8 @@
     UILabel *weightLabel;
 }
 @property (strong, nonatomic) IBOutlet UILabel *weightLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)segmentedControlIndexChanged:(id)sender;
+
 
 @end

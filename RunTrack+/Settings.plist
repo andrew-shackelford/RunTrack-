@@ -6,5 +6,7 @@
 	<integer>150</integer>
 	<key>Units</key>
 	<string>Imperial</string>
+	<key>unitsJustChangedKilograms</key>
+	<false/>
 </dict>
 </plist>

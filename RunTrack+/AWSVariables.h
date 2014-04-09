@@ -14,6 +14,7 @@
 @property (readwrite, nonatomic) float weightInPounds;
 @property (readwrite, nonatomic) float weightInKilograms;
 @property (nonatomic, strong) NSDictionary *settings;
+@property (readwrite, nonatomic) BOOL unitsJustChangedKilograms;
 
 -(void) updateWeight:(float)weight;
 -(void) updateUnits:(NSString *)newUnits;

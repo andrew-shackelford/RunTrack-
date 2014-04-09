@@ -30,6 +30,24 @@ NSString *KgComponentOne;
     return self;
 }
 
+-(void)awakeFromNib
+{
+    AWSVariables *obj = [[AWSVariables alloc] init];
+    NSString *currentUnits = obj.units;
+    if ([currentUnits isEqualToString:@"Imperial"]) {
+        float weight = obj.weightInPounds;
+        [_picker selectRow:[[NSNumber numberWithFloat:weight-1] integerValue] inComponent:0 animated:YES];
+    } else {
+        float weight = obj.weightInKilograms;
+        if (fmodf(weight, 1) == 0) {
+            [_picker selectRow:[[NSNumber numberWithFloat:weight-1] integerValue] inComponent:0 animated:YES];
+        } else {
+            [_picker selectRow:[[NSNumber numberWithFloat:weight-1] integerValue] inComponent:0 animated:YES];
+            [_picker selectRow:[[NSNumber numberWithFloat:1] integerValue] inComponent:1 animated:YES];
+        }
+    }
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     NSInteger numberOfComponents;
@@ -73,7 +91,7 @@ NSString *KgComponentOne;
     NSString *titleForRow;
     if (component == 0) {
         NSInteger number = row + 1;
-        titleForRow = [NSString stringWithFormat:@"%d", number];
+        titleForRow = [NSString stringWithFormat:@"%ld", (long)number];
     } else  if (row == 0) {
         titleForRow = [NSString stringWithFormat:@".0"];
     } else {
@@ -87,7 +105,7 @@ NSString *KgComponentOne;
 {
     AWSVariables *obj = [[AWSVariables alloc] init];
     NSString *weightString;
-    NSLog(@"Selected Row %d", row);
+    NSLog(@"Selected Row %ld", (long)row);
     if ([currentUnits isEqualToString:@"Metric"]) {
         if (component == 0) {
             KgComponentZero = [[NSNumber numberWithLong:row + 1] stringValue];
