@@ -55,7 +55,7 @@ NSString *KgComponentOne;
      if we are using metric units, we want two components (kg and .5 kg) */
     AWSVariables *obj = [[AWSVariables alloc] init];
     currentUnits = obj.units;
-    NSLog(@"%@", currentUnits);
+    NSLog(@"Units are %@", currentUnits);
     if ([currentUnits isEqualToString:@"Metric"]) {
         [promptLabel setText:@"Enter your weight in kilograms"];
     } else {

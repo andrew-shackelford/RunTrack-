@@ -14,8 +14,6 @@
 @synthesize weightInPounds;
 @synthesize weightInKilograms;
 @synthesize settings;
-@synthesize unitsJustChangedKilograms;
-
 
 
 - (id) init
@@ -106,7 +104,6 @@
     [settings setValue:finalFinalWeight forKey:@"Weight"];
     [settings setValue:newUnits forKey:@"Units"];
     [settings writeToFile:destPath atomically:YES];
-    self.unitsJustChangedKilograms = YES;
 }
 
 

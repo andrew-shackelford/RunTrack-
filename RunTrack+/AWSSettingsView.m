@@ -28,7 +28,6 @@ BOOL unitsJustChanged = NO;
     if (segmentedControlSelected == 1) {
         AWSVariables *obj2 = [[AWSVariables alloc] init];
         [obj2 updateUnits:@"Metric"];
-        NSLog(@"sup");
     }
     } else {
         AWSVariables *obj3 = [[AWSVariables alloc] init];
@@ -40,18 +39,16 @@ BOOL unitsJustChanged = NO;
         }
     }
     unitsJustChanged = NO;
-    NSLog(@"Hi again!");
+    NSLog(@"awakeFromNib is running!");
      AWSVariables *obj = [[AWSVariables alloc] init];
      NSString *weightLabelText;
      float weightLabelNumber;
      if ([obj.units isEqualToString:@"Metric"]) {
          weightLabelNumber = obj.weightInKilograms;
          weightLabelText = [[NSString stringWithFormat:@"%.1f", weightLabelNumber] stringByAppendingString:@" kg"];
-         NSLog(@"sup2");
      } else {
          weightLabelNumber = obj.weightInPounds;
          weightLabelText = [[NSString stringWithFormat:@"%.0f", weightLabelNumber] stringByAppendingString:@" lbs"];
-         NSLog(@"sup3");
      }
      NSLog(@"Weight string is '%@'.", weightLabelText);
      [weightLabel setText:weightLabelText];
