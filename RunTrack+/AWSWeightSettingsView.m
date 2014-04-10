@@ -33,7 +33,7 @@ NSString *KgComponentOne;
 -(void)awakeFromNib
 {
     AWSVariables *obj = [[AWSVariables alloc] init];
-    NSString *currentUnits = obj.units;
+    currentUnits = obj.units;
     if ([currentUnits isEqualToString:@"Imperial"]) {
         float weight = obj.weightInPounds;
         [_picker selectRow:[[NSNumber numberWithFloat:weight-1] integerValue] inComponent:0 animated:YES];

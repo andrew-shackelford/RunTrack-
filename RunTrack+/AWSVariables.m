@@ -14,6 +14,8 @@
 @synthesize weightInPounds;
 @synthesize weightInKilograms;
 @synthesize settings;
+@synthesize typeOfWorkout;
+@synthesize workoutGoal;
 
 
 - (id) init
@@ -106,6 +108,22 @@
     [settings writeToFile:destPath atomically:YES];
 }
 
+-(void) updateGoal:(float)goal
+{
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"Settings.plist"];
+    settings = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
+    NSNumber *finalGoal = [NSNumber numberWithFloat:goal];
+    [settings setValue:finalGoal forKey:@"workoutGoal"];
+}
+
+-(void) updateWorkout:(NSString *)workout
+{
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"Settings.plist"];
+    settings = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
+    [settings setValue:workout forKey:@"typeOfWorkout"];
+}
 
 
 @end

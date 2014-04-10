@@ -6,7 +6,9 @@
 	<integer>150</integer>
 	<key>Units</key>
 	<string>Imperial</string>
-	<key>unitsJustChangedKilograms</key>
-	<false/>
+	<key>typeOfWorkout</key>
+	<string>Distance</string>
+	<key>workoutGoal</key>
+	<integer>5</integer>
 </dict>
 </plist>

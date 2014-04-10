@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AWSNewDistanceWorkoutViewController : UIViewController
+@interface AWSNewDistanceWorkoutViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate> {
+    
+}
+
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
+
 
 @end
