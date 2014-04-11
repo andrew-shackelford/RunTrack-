@@ -45,6 +45,9 @@
             weightInKilograms = [[settings objectForKey:@"Weight"] floatValue];
             weightInPounds = weightInKilograms*2.20462;
         }
+        
+        typeOfWorkout = [settings objectForKey:@"typeOfWorkout"];
+        workoutGoal = [[settings objectForKey:@"workoutGoal"] floatValue];
     }
     
     return self;
@@ -113,8 +116,8 @@
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"Settings.plist"];
     settings = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
-    NSNumber *finalGoal = [NSNumber numberWithFloat:goal];
-    [settings setValue:finalGoal forKey:@"workoutGoal"];
+    [settings setValue:[NSNumber numberWithFloat:goal] forKey:@"workoutGoal"];
+    [settings writeToFile:destPath atomically:YES];
 }
 
 -(void) updateWorkout:(NSString *)workout
@@ -123,6 +126,7 @@
     destPath = [destPath stringByAppendingPathComponent:@"Settings.plist"];
     settings = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
     [settings setValue:workout forKey:@"typeOfWorkout"];
+    [settings writeToFile:destPath atomically:YES];
 }
 
 

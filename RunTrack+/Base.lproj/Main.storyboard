@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mQd-5j-ol1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mQd-5j-ol1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Main View Controller - Workouts-->
@@ -39,6 +39,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Workouts" id="pm8-Q1-v6c">
+                        <barButtonItem key="backBarButtonItem" title="Workouts" id="JDq-1f-ur9"/>
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="rgD-qv-LNA">
                             <color key="tintColor" red="0.89957157259999998" green="0.3234311996" blue="0.055727066530000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -185,14 +186,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Workout" prompt="Select the type of workout" id="1cd-5C-l7i">
-                        <barButtonItem key="backBarButtonItem" title="Workouts" id="JA5-S3-ZSa"/>
+                        <barButtonItem key="backBarButtonItem" title="New Workout" id="JA5-S3-ZSa"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9H-FJ-oTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1264" y="110"/>
         </scene>
-        <!--New Distance Workout View Controller - New Distance Workout-->
+        <!--New Distance Workout View Controller - Distance Workout-->
         <scene sceneID="PDg-1K-Nug">
             <objects>
                 <viewController id="IwE-pI-JTe" customClass="AWSNewDistanceWorkoutViewController" sceneMemberID="viewController">
@@ -220,12 +221,15 @@
                                     <color key="titleColor" red="0.89957157259999998" green="0.3234311996" blue="0.055727066530000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="3CJ-gr-npp" kind="push" id="y4m-Y1-3ag"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Distance Workout" prompt="Choose your distance goal" id="AYV-FW-Nn3">
-                        <barButtonItem key="backBarButtonItem" title="New Workout" id="arH-pd-udM"/>
+                    <navigationItem key="navigationItem" title="Distance Workout" prompt="Choose your distance goal" id="AYV-FW-Nn3">
+                        <barButtonItem key="backBarButtonItem" title="New Workout" id="obO-nT-RDh"/>
                     </navigationItem>
                     <connections>
                         <outlet property="picker" destination="yUw-HM-ZD3" id="Euv-Cr-mbc"/>
@@ -235,7 +239,102 @@
             </objects>
             <point key="canvasLocation" x="1710" y="110"/>
         </scene>
-        <!--New Time Workout View Controller - New Time Workout-->
+        <!--Workout View Controller - Distance Workout-->
+        <scene sceneID="X0O-jm-jSW">
+            <objects>
+                <viewController id="3CJ-gr-npp" customClass="AWSWorkoutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ILZ-aR-Uxw"/>
+                        <viewControllerLayoutGuide type="bottom" id="4FP-4i-Qyk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XiP-vP-kgL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUY-h5-ffr">
+                                <rect key="frame" x="20" y="82" width="280" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="70"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed7-LM-fdD">
+                                <rect key="frame" x="69" y="166" width="183" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJD-SG-0KB">
+                                <rect key="frame" x="20" y="318" width="280" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00/mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1P-H4-qgh">
+                                <rect key="frame" x="63" y="222" width="195" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npr-Wf-F3o">
+                                <rect key="frame" x="20" y="273" width="280" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db0-Pf-TFK">
+                                <rect key="frame" x="20" y="384" width="280" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGC-Ob-dBC">
+                                <rect key="frame" x="56" y="441" width="209" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="33"/>
+                                <state key="normal" title="Pause Workout">
+                                    <color key="titleColor" red="0.89957157259999998" green="0.3234311996" blue="0.055727066530000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseWorkout:" destination="3CJ-gr-npp" eventType="touchUpInside" id="sAX-ve-h4l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk0-zZ-Ya7">
+                                <rect key="frame" x="56" y="496" width="209" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="End Workout">
+                                    <color key="titleColor" red="0.89957157259999998" green="0.3234311996" blue="0.055727066530000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Distance Workout" id="YkL-cb-2OT">
+                        <barButtonItem key="backBarButtonItem" title=" " id="jZE-RP-T4f"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calories" destination="Npr-Wf-F3o" id="9OP-BO-T4K"/>
+                        <outlet property="distance" destination="eUY-h5-ffr" id="IFU-ca-bID"/>
+                        <outlet property="pace" destination="k1P-H4-qgh" id="oyf-Ib-Uj9"/>
+                        <outlet property="pauseWorkoutButton" destination="yGC-Ob-dBC" id="1rN-uB-AlH"/>
+                        <outlet property="speed" destination="Db0-Pf-TFK" id="b8i-gX-NTT"/>
+                        <outlet property="stuffToGoal" destination="YJD-SG-0KB" id="JbV-Hm-ZKB"/>
+                        <outlet property="workoutTime" destination="ed7-LM-fdD" id="Z4q-oV-Njq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlS-Hm-z2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2137" y="110"/>
+        </scene>
+        <!--New Time Workout View Controller - Time Workout-->
         <scene sceneID="UoC-Je-ViX">
             <objects>
                 <viewController id="8L7-Gc-gv4" customClass="AWSNewTimeWorkoutViewController" sceneMemberID="viewController">
@@ -263,7 +362,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Time Workout" prompt="Choose your time goal" id="9hG-xv-oha">
+                    <navigationItem key="navigationItem" title="Time Workout" prompt="Choose your time goal" id="9hG-xv-oha">
                         <barButtonItem key="backBarButtonItem" title="New Workout" id="oYq-fw-xAg"/>
                     </navigationItem>
                 </viewController>
@@ -271,7 +370,7 @@
             </objects>
             <point key="canvasLocation" x="1713" y="792"/>
         </scene>
-        <!--New Free Workout View Controller - New Free Workout-->
+        <!--New Free Workout View Controller - Free Workout-->
         <scene sceneID="Bk6-Uj-tGk">
             <objects>
                 <viewController id="LVM-Q4-lx8" customClass="AWSNewFreeWorkoutViewController" sceneMemberID="viewController">
@@ -295,7 +394,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Free Workout" id="UkK-ms-v21">
+                    <navigationItem key="navigationItem" title="Free Workout" id="UkK-ms-v21">
                         <barButtonItem key="backBarButtonItem" title="New Workout" id="zVF-6f-eJM"/>
                     </navigationItem>
                 </viewController>
@@ -303,7 +402,7 @@
             </objects>
             <point key="canvasLocation" x="1710" y="2114"/>
         </scene>
-        <!--New Calorie Workout View Controller - New Calorie Workout-->
+        <!--New Calorie Workout View Controller - Calorie Workout-->
         <scene sceneID="13U-1k-oDJ">
             <objects>
                 <viewController id="hvV-qu-uJs" customClass="AWSNewCalorieWorkoutViewController" sceneMemberID="viewController">
@@ -331,7 +430,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Calorie Workout" prompt="Choose your calories burned goal" id="Qgw-1a-Qlt">
+                    <navigationItem key="navigationItem" title="Calorie Workout" prompt="Choose your calories burned goal" id="Qgw-1a-Qlt">
                         <barButtonItem key="backBarButtonItem" title="New Workout" id="lQ7-y9-Fdt"/>
                     </navigationItem>
                 </viewController>

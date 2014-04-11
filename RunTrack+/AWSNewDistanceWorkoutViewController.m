@@ -35,9 +35,10 @@ float componentTwo;
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:.898039216 green:.321568627 blue:.054901961 alpha:1];
     
+    
     AWSVariables *obj = [[AWSVariables alloc] init];
     currentUnits = obj.units;
-    obj.typeOfWorkout = @"Distance";
+    [obj updateWorkout:@"Distance"];
     if ([currentUnits isEqualToString: @"Imperial"]) {
         self.navigationItem.prompt = @"Choose your distance goal in miles";
     } else {
@@ -82,7 +83,7 @@ float componentTwo;
         NSInteger number = row;
         titleForRow = [NSString stringWithFormat:@"%ld", (long)number];
     } else {
-        NSString *secondPartOfNumber = [NSString stringWithFormat:@"%d", row];
+        NSString *secondPartOfNumber = [NSString stringWithFormat:@"%ld", (long)row];
         titleForRow = [[NSString stringWithFormat:@"."] stringByAppendingString:secondPartOfNumber];
     }
     return titleForRow;
@@ -107,8 +108,10 @@ float componentTwo;
         }
         NSString *workoutGoalString = [NSString stringWithFormat:@"%.0f.%.0f", componentOne, componentTwo];
         NSLog(@"workoutGoalString is %@", workoutGoalString);
-        [obj updateGoal:[workoutGoalString floatValue]];
+        float workoutGoal = [workoutGoalString floatValue];
+        [obj updateGoal:workoutGoal];
     }
+    
 }
 
 @end
