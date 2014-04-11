@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AWSNewCalorieWorkoutViewController : UIViewController
+@interface AWSNewCalorieWorkoutViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
 
 @end

@@ -65,6 +65,16 @@ BOOL hasGoalNotificationBeenSent;
     goal = obj.workoutGoal;
     hasGoalNotificationBeenSent = NO;
     
+    if ([typeOfWorkout isEqualToString:@"Distance"]) {
+        self.navigationItem.title = @"Distance Workout";
+    }
+    if ([typeOfWorkout isEqualToString:@"Time"]) {
+        self.navigationItem.title = @"Time Workout";
+    }
+    if ([typeOfWorkout isEqualToString:@"Calorie"]) {
+        self.navigationItem.title = @"Calorie Workout";
+    }
+    
     self.navigationItem.hidesBackButton = YES;
     
     if ([typeOfWorkout isEqualToString:@"Distance"]) {
@@ -73,14 +83,18 @@ BOOL hasGoalNotificationBeenSent;
         [_pace setText:@"0:00/mi"];
         [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f mi to go", goal]];
         [_speed setText: @"0 mi/h"];
-        weight = obj.weightInPounds;
     } else {
         [_distance setText:@"0 km"];
         [_pace setText:@"0:00/km"];
         [_speed setText:@"0 mi/h"];
         [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f km to go", goal]];
-        weight = obj.weightInKilograms;
     }
+    }
+    
+    if ([currentUnits isEqualToString:@"Imperial"]) {
+        weight = obj.weightInPounds;
+    } else {
+        weight = obj.weightInKilograms;
     }
     
     if ([typeOfWorkout isEqualToString:@"Time"]) {
@@ -88,7 +102,7 @@ BOOL hasGoalNotificationBeenSent;
     }
     
     if ([typeOfWorkout isEqualToString:@"Calorie"]) {
-        [_stuffToGoal setText:[NSString stringWithFormat:@"%.0f time to go", goal]];
+        [_stuffToGoal setText:[NSString stringWithFormat:@"%.0f calories to burn", goal]];
     }
     
     [_calories setText:@"0 calories burned"];
@@ -256,6 +270,17 @@ BOOL hasGoalNotificationBeenSent;
                             }
                         }
                         caloriesBurned = 0.75 * weight * distanceTraveledNumber;
+                        if ([typeOfWorkout isEqualToString:@"Calorie"]) {
+                            if (goal - caloriesBurned > 0) {
+                                goalToGo = goal - caloriesBurned;
+                                [_stuffToGoal setText:[NSString stringWithFormat:@"%.0f calories to burn", goalToGo]];
+                            } else if (hasGoalNotificationBeenSent == NO) {
+                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.0f calories burned!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                [goalReached show];
+                                [_stuffToGoal setText:@"Goal reached"];
+                                hasGoalNotificationBeenSent = YES;
+                            }
+                        }
                         
                     } else {
                         distanceTraveled = [NSString stringWithFormat:@"%.2f km", distanceTraveledNumber];
@@ -271,6 +296,17 @@ BOOL hasGoalNotificationBeenSent;
                             }
                         }
                         caloriesBurned = 0.75 * weight * distanceTraveledNumber * 2.20462 * 0.621371;
+                        if ([typeOfWorkout isEqualToString:@"Calorie"]) {
+                            if (goal - caloriesBurned > 0) {
+                                goalToGo = goal - caloriesBurned;
+                                [_stuffToGoal setText:[NSString stringWithFormat:@"%.0f calories to burn", goalToGo]];
+                            } else if (hasGoalNotificationBeenSent == NO) {
+                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.0f calories burned!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                [goalReached show];
+                                [_stuffToGoal setText:@"Goal reached"];
+                                hasGoalNotificationBeenSent = YES;
+                            }
+                        }
                     }
                     [_calories setText:[NSString stringWithFormat:@"%.0f calories burned",caloriesBurned]];
                     
