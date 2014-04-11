@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AWSNewTimeWorkoutViewController : UIViewController
+@interface AWSNewTimeWorkoutViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate> {
+    
+}
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
 
 @end

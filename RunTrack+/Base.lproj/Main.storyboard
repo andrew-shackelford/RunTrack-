@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mQd-5j-ol1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mQd-5j-ol1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Main View Controller - Workouts-->
@@ -349,6 +349,10 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NX4-rI-rwj">
                                 <rect key="frame" x="0.0" y="152" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8L7-Gc-gv4" id="mwO-XK-r74"/>
+                                    <outlet property="delegate" destination="8L7-Gc-gv4" id="cCo-do-wKn"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghd-F3-44C">
                                 <rect key="frame" x="0.0" y="330" width="320" height="122"/>
@@ -358,6 +362,9 @@
                                     <color key="titleColor" red="0.89957157259999998" green="0.3234311996" blue="0.055727066530000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="3CJ-gr-npp" kind="push" id="ZBQ-Ub-Wkt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -365,6 +372,9 @@
                     <navigationItem key="navigationItem" title="Time Workout" prompt="Choose your time goal" id="9hG-xv-oha">
                         <barButtonItem key="backBarButtonItem" title="New Workout" id="oYq-fw-xAg"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="picker" destination="NX4-rI-rwj" id="hav-6u-nMz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dun-YE-uf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -620,7 +630,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ist-c2-bFd"/>
         <segue reference="54p-4H-NZL"/>
+        <segue reference="ZBQ-Ub-Wkt"/>
     </inferredMetricsTieBreakers>
 </document>

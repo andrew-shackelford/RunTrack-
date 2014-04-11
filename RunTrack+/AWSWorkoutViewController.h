@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface AWSWorkoutViewController : UIViewController
 
@@ -18,5 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *pace;
 @property (strong, nonatomic) IBOutlet UILabel *calories;
 @property (strong, nonatomic) IBOutlet UILabel *stuffToGoal;
+
+
 
 @end

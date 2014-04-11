@@ -60,13 +60,13 @@ float caloriesGoal;
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString stringWithFormat:@"%d", (row + 1)*25];
+    return [NSString stringWithFormat:@"%ld", (row + 1)*25];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     AWSVariables *obj = [[AWSVariables alloc] init];
-    [obj updateGoal:[[NSString stringWithFormat:@"%d", (row + 1)*25] floatValue]];
+    [obj updateGoal:[[NSString stringWithFormat:@"%ld", (row + 1)*25] floatValue]];
 }
 
 @end

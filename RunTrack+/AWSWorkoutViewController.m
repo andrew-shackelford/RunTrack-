@@ -62,9 +62,13 @@ BOOL hasGoalNotificationBeenSent;
     AWSVariables *obj = [[AWSVariables alloc] init];
     currentUnits = obj.units;
     typeOfWorkout = obj.typeOfWorkout;
-    goal = obj.workoutGoal;
+    if ([typeOfWorkout isEqualToString:@"Time"]) {
+        goal = obj.workoutGoal * 60;
+    } else {
+        goal = obj.workoutGoal;
+    }
     hasGoalNotificationBeenSent = NO;
-    
+
     if ([typeOfWorkout isEqualToString:@"Distance"]) {
         self.navigationItem.title = @"Distance Workout";
     }
@@ -98,7 +102,36 @@ BOOL hasGoalNotificationBeenSent;
     }
     
     if ([typeOfWorkout isEqualToString:@"Time"]) {
-        [_stuffToGoal setText:[NSString stringWithFormat:@"*xx:xx:xx time to go"]]; // need to fix this
+        goalToGo = obj.workoutGoal * 60;
+        //are we talking two-digit hours here (that's a long workout...) ?
+         if (goalToGo/36000 >= 1) {
+             NSInteger ti = (NSInteger)goalToGo;
+             NSInteger seconds = ti % 60;
+             NSInteger minutes = (ti / 60) % 60;
+             NSInteger hours = (ti / 3600);
+             _stuffToGoal.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld to go", (long)hours, (long)minutes, (long)seconds];
+         } else if (goalToGo/3600 >= 1) {
+             NSInteger ti = (NSInteger)goalToGo;
+             NSInteger seconds = ti % 60;
+             NSInteger minutes = (ti / 60) % 60;
+             NSInteger hours = (ti / 3600);
+             _stuffToGoal.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld to go", (long)hours, (long)minutes, (long)seconds];
+         } else if (goalToGo/600 >= 1) { //are we talking two-digit minutes?
+             NSInteger ti = (NSInteger)goalToGo;
+             NSInteger seconds = ti % 60;
+             NSInteger minutes = (ti / 60) % 60;
+             _stuffToGoal.text = [NSString stringWithFormat:@"%02ld:%02ld to go", (long)minutes, (long)seconds];
+         } else if (goalToGo/60 >= 1) { //are we talking one-digit minutes?
+             NSInteger ti = (NSInteger)goalToGo;
+             NSInteger seconds = ti % 60;
+             NSInteger minutes = (ti / 60) % 60;
+             _stuffToGoal.text = [NSString stringWithFormat:@"%1ld:%02ld to go", (long)minutes, (long)seconds];
+         } else if (goalToGo > 0) { // are we talking seconds?
+             NSInteger ti = (NSInteger)goalToGo;
+             NSInteger seconds = ti % 60;
+             _stuffToGoal.text = [NSString stringWithFormat:@"0:%02ld to go", (long)seconds];
+         }
+
     }
     
     if ([typeOfWorkout isEqualToString:@"Calorie"]) {
@@ -229,7 +262,70 @@ BOOL hasGoalNotificationBeenSent;
     }
     
     if ([typeOfWorkout isEqualToString:@"Time"]) {
-    
+        //are we talking two-digit hours here (that's a long workout...) ?
+        goalToGo = goal - secondsSinceWorkoutStart;
+        if (goalToGo > 0) {
+            if (goalToGo/36000 >= 1) {
+                NSInteger ti = (NSInteger)goalToGo;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                _stuffToGoal.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld to go", (long)hours, (long)minutes, (long)seconds];
+            } else if (goalToGo/3600 >= 1) {
+                NSInteger ti = (NSInteger)goalToGo;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                _stuffToGoal.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld to go", (long)hours, (long)minutes, (long)seconds];
+            } else if (goalToGo/600 >= 1) { //are we talking two-digit minutes?
+                NSInteger ti = (NSInteger)goalToGo;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                _stuffToGoal.text = [NSString stringWithFormat:@"%02ld:%02ld to go", (long)minutes, (long)seconds];
+            } else if (goalToGo/60 >= 1) { //are we talking one-digit minutes?
+                NSInteger ti = (NSInteger)goalToGo;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                _stuffToGoal.text = [NSString stringWithFormat:@"%1ld:%02ld to go", (long)minutes, (long)seconds];
+            } else if (goalToGo > 0) { // are we talking seconds?
+                NSInteger ti = (NSInteger)goalToGo;
+                NSInteger seconds = ti % 60;
+                _stuffToGoal.text = [NSString stringWithFormat:@"0:%02ld to go", (long)seconds];
+            }
+        } else if (hasGoalNotificationBeenSent == NO) {
+            NSString *goalString;
+            if (goal/36000 >= 1) {
+                NSInteger ti = (NSInteger)goal;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                goalString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
+            } else if (goal/3600 >= 1) {
+                NSInteger ti = (NSInteger)goal;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                goalString = [NSString stringWithFormat:@"%1ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
+            } else if (goal/600 >= 1) { //are we talking two-digit minutes?
+                NSInteger ti = (NSInteger)goal;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                goalString = [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
+            } else if (goal/60 >= 1) { //are we talking one-digit minutes?
+                NSInteger ti = (NSInteger)goal;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                goalString = [NSString stringWithFormat:@"%1ld:%02ld", (long)minutes, (long)seconds];
+            } else if (goal > 0) { // are we talking seconds?
+                NSInteger ti = (NSInteger)goal;
+                NSInteger seconds = ti % 60;
+                goalString = [NSString stringWithFormat:@"0:%02ld", (long)seconds];
+            }
+            UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %@ time ran!", goalString] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [goalReached show];
+            [_stuffToGoal setText:@"Goal reached"];
+            hasGoalNotificationBeenSent = YES;
+        }
     }
     
     if (workoutPaused == NO) {
