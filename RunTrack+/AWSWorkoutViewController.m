@@ -36,6 +36,9 @@ float goal;
 NSString *typeOfWorkout;
 NSString *currentUnits;
 float goalToGo;
+float caloriesBurned;
+float weight;
+BOOL hasGoalNotificationBeenSent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +63,7 @@ float goalToGo;
     currentUnits = obj.units;
     typeOfWorkout = obj.typeOfWorkout;
     goal = obj.workoutGoal;
+    hasGoalNotificationBeenSent = NO;
     
     self.navigationItem.hidesBackButton = YES;
     
@@ -69,10 +73,13 @@ float goalToGo;
         [_pace setText:@"0:00/mi"];
         [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f mi to go", goal]];
         [_speed setText: @"0 mi/h"];
+        weight = obj.weightInPounds;
     } else {
         [_distance setText:@"0 km"];
         [_pace setText:@"0:00/km"];
+        [_speed setText:@"0 mi/h"];
         [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f km to go", goal]];
+        weight = obj.weightInKilograms;
     }
     }
     
@@ -89,6 +96,8 @@ float goalToGo;
     
     workoutPaused = NO;
     secondsPaused = 0;
+    caloriesBurned = 0;
+    
     
     manager.delegate = self;
     manager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -114,7 +123,9 @@ float goalToGo;
         secondsSinceWorkoutStartWhenPaused = secondsSinceWorkoutStart;
         workoutPaused = YES;
         self.speed.text = @"Workout Paused";
+        _speed.font = [UIFont fontWithName:@"HelveticaNeue-UltraLightItalic" size:34];
         self.pace.text = @"Workout Paused";
+        _pace.font = [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:30];
         [sender setTitle:@"Resume Workout" forState:UIControlStateNormal];
         
         //displaying the time
@@ -153,6 +164,8 @@ float goalToGo;
         secondsPaused = [[NSDate date] timeIntervalSinceDate:datePaused] + secondsPaused;
         [manager startUpdatingLocation];
         [sender setTitle:@"Pause Workout" forState:UIControlStateNormal];
+        _pace.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:30];
+        _speed.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:34];
     }
     
 }
@@ -231,15 +244,35 @@ float goalToGo;
                     distanceTraveledNumber = distanceRecentlyTraveledNumberUnits + distanceTraveledNumber;
                     if ([currentUnits isEqualToString:@"Imperial"]) {
                         distanceTraveled = [NSString stringWithFormat:@"%.2f mi", distanceTraveledNumber];
-                        goalToGo = goal - distanceTraveledNumber;
-                        [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f mi to go", goalToGo]];
+                        if ([typeOfWorkout isEqualToString:@"Distance"]) {
+                            if (goal - distanceTraveledNumber > 0) {
+                                goalToGo = goal - distanceTraveledNumber;
+                                [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f mi to go", goalToGo]];
+                            } else if (hasGoalNotificationBeenSent == NO) {
+                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.1f mi!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                [goalReached show];
+                                [_stuffToGoal setText:@"Goal reached"];
+                                hasGoalNotificationBeenSent = YES;
+                            }
+                        }
+                        caloriesBurned = 0.75 * weight * distanceTraveledNumber;
+                        
                     } else {
                         distanceTraveled = [NSString stringWithFormat:@"%.2f km", distanceTraveledNumber];
-                        goalToGo = goal - distanceTraveledNumber;
-                        NSLog(@"Goal is %.2f", goal);
-                        NSLog(@"distanceTraveledNumber is %.2f", distanceTraveledNumber);
-                        [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f km to go", goalToGo]];
+                        if ([typeOfWorkout isEqualToString:@"Distance"]) {
+                            if (goal - distanceTraveledNumber > 0) {
+                            goalToGo = goal - distanceTraveledNumber;
+                            [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f km to go", goalToGo]];
+                            } else if (hasGoalNotificationBeenSent == NO) {
+                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.1f km!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                [goalReached show];
+                                [_stuffToGoal setText:@"Goal reached"];
+                                hasGoalNotificationBeenSent = YES;
+                            }
+                        }
+                        caloriesBurned = 0.75 * weight * distanceTraveledNumber * 2.20462 * 0.621371;
                     }
+                    [_calories setText:[NSString stringWithFormat:@"%.0f calories burned",caloriesBurned]];
                     
                 }
                 self.distance.text = distanceTraveled;
@@ -287,6 +320,70 @@ float goalToGo;
         
     }
     
+    // pace calculations
+    
+    float pace;
+    
+    if ([currentUnits isEqualToString:@"Imperial"]) {
+        pace = 3600 / (currentLocation.speed * 2.23693629); // seconds/hour / mi/h
+        NSLog(@"pace: %.0f", pace);
+        if (pace/36000 >= 1) {
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            NSInteger hours = (ti / 3600);
+            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld/mi", (long)hours, (long)minutes, (long)seconds];
+        } else if (pace/3600 >= 1) {
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            NSInteger hours = (ti / 3600);
+            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld/mi", (long)hours, (long)minutes, (long)seconds];
+        } else if (pace/600 >= 1) { //are we talking two-digit minutes?
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld/mi", (long)minutes, (long)seconds];
+        } else if (pace/60 >= 1) { //are we talking one-digit minutes?
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld/mi", (long)minutes, (long)seconds];
+        } else if (pace > 0) { // are we talking seconds?
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            _pace.text = [NSString stringWithFormat:@"0:%02ld/mi", (long)seconds];
+        }
+    } else {
+        pace = 3600 / (currentLocation.speed * 3.6); // seconds/hour / km/h
+        if (pace/36000 >= 1) {
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            NSInteger hours = (ti / 3600);
+            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld/km", (long)hours, (long)minutes, (long)seconds];
+        } else if (pace/3600 >= 1) {
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            NSInteger hours = (ti / 3600);
+            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld/km", (long)hours, (long)minutes, (long)seconds];
+        } else if (pace/600 >= 1) { //are we talking two-digit minutes?
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld/km", (long)minutes, (long)seconds];
+        } else if (pace/60 >= 1) { //are we talking one-digit minutes?
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            NSInteger minutes = (ti / 60) % 60;
+            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld/km", (long)minutes, (long)seconds];
+        } else if (pace > 0) { // are we talking seconds?
+            NSInteger ti = (NSInteger)pace;
+            NSInteger seconds = ti % 60;
+            _pace.text = [NSString stringWithFormat:@"0:%02ld/km", (long)seconds];
+        }
+    }
     
     
     
