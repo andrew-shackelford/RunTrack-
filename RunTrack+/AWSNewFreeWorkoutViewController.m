@@ -7,6 +7,7 @@
 //
 
 #import "AWSNewFreeWorkoutViewController.h"
+#import "AWSVariables.h"
 
 @interface AWSNewFreeWorkoutViewController ()
 
@@ -29,6 +30,9 @@
 	// Do any additional setup after loading the view.
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:.898039216 green:.321568627 blue:.054901961 alpha:1];
+    
+    AWSVariables *obj = [[AWSVariables alloc] init];
+    [obj updateWorkout:@"Free"];
 }
 
 - (void)didReceiveMemoryWarning

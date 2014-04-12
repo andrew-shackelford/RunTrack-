@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AudioToolbox/AudioToolbox.h>
 
 @interface AWSWorkoutViewController : UIViewController
 

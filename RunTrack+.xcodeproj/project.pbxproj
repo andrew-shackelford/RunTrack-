@@ -33,6 +33,8 @@
 		49BC2B2618EA07C50033C043 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49BC2B2418EA07C50033C043 /* InfoPlist.strings */; };
 		49BC2B2818EA07C50033C043 /* RunTrack_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BC2B2718EA07C50033C043 /* RunTrack_Tests.m */; };
 		49BFD9E918F6CF460063BFD9 /* AWSFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BFD9E818F6CF460063BFD9 /* AWSFlipsideViewController.m */; };
+		49DA54BB18F8B77900103310 /* AWSDetermingLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DA54BA18F8B77900103310 /* AWSDetermingLocationViewController.m */; };
+		49DA54BE18F8BDBB00103310 /* AWSFreeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DA54BD18F8BDBB00103310 /* AWSFreeWorkoutViewController.m */; };
 		49E6A8A118F0885800F8DB92 /* AWSSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8A018F0885800F8DB92 /* AWSSettingsView.m */; };
 		49E6A8A418F0896300F8DB92 /* AWSWeightSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A8A318F0896300F8DB92 /* AWSWeightSettingsView.m */; };
 		49F61C6118EF445A0077E70F /* AWSVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F61C6018EF445A0077E70F /* AWSVariables.m */; };
@@ -87,6 +89,10 @@
 		49BC2B2718EA07C50033C043 /* RunTrack_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTrack_Tests.m; sourceTree = "<group>"; };
 		49BFD9E718F6CF460063BFD9 /* AWSFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFlipsideViewController.h; sourceTree = "<group>"; };
 		49BFD9E818F6CF460063BFD9 /* AWSFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFlipsideViewController.m; sourceTree = "<group>"; };
+		49DA54B918F8B77900103310 /* AWSDetermingLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDetermingLocationViewController.h; sourceTree = "<group>"; };
+		49DA54BA18F8B77900103310 /* AWSDetermingLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDetermingLocationViewController.m; sourceTree = "<group>"; };
+		49DA54BC18F8BDBB00103310 /* AWSFreeWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFreeWorkoutViewController.h; sourceTree = "<group>"; };
+		49DA54BD18F8BDBB00103310 /* AWSFreeWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFreeWorkoutViewController.m; sourceTree = "<group>"; };
 		49E6A89F18F0885800F8DB92 /* AWSSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSettingsView.h; sourceTree = "<group>"; };
 		49E6A8A018F0885800F8DB92 /* AWSSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSettingsView.m; sourceTree = "<group>"; };
 		49E6A8A218F0896300F8DB92 /* AWSWeightSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSWeightSettingsView.h; sourceTree = "<group>"; };
@@ -162,8 +168,12 @@
 				4952E4D718F6E7C10058BDD2 /* AWSNewWorkoutViewController.h */,
 				4952E4D818F6E7C10058BDD2 /* AWSNewWorkoutViewController.m */,
 				49BC2B0B18EA07C50033C043 /* Main.storyboard */,
+				49DA54B918F8B77900103310 /* AWSDetermingLocationViewController.h */,
+				49DA54BA18F8B77900103310 /* AWSDetermingLocationViewController.m */,
 				4963629B18F73FA200B4C4DD /* AWSWorkoutViewController.h */,
 				4963629C18F73FA200B4C4DD /* AWSWorkoutViewController.m */,
+				49DA54BC18F8BDBB00103310 /* AWSFreeWorkoutViewController.h */,
+				49DA54BD18F8BDBB00103310 /* AWSFreeWorkoutViewController.m */,
 				497259B018F70448001420E0 /* AWSNewFreeWorkoutViewController.h */,
 				497259B118F70448001420E0 /* AWSNewFreeWorkoutViewController.m */,
 				497259AD18F70435001420E0 /* AWSNewCalorieWorkoutViewController.h */,
@@ -333,6 +343,8 @@
 				4963629D18F73FA200B4C4DD /* AWSWorkoutViewController.m in Sources */,
 				4952E4D918F6E7C10058BDD2 /* AWSNewWorkoutViewController.m in Sources */,
 				497259AF18F70435001420E0 /* AWSNewCalorieWorkoutViewController.m in Sources */,
+				49DA54BE18F8BDBB00103310 /* AWSFreeWorkoutViewController.m in Sources */,
+				49DA54BB18F8B77900103310 /* AWSDetermingLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
