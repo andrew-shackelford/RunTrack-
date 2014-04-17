@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *calories;
 @property (strong, nonatomic) IBOutlet UILabel *stuffToGoal;
 
+- (IBAction)endWorkout:(id)sender;
 
 
 @end

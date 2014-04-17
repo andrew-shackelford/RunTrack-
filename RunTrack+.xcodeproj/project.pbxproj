@@ -15,6 +15,8 @@
 		4952E4DC18F6EEF50058BDD2 /* AWSNewDistanceWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4952E4DB18F6EEF50058BDD2 /* AWSNewDistanceWorkoutViewController.m */; };
 		4963629D18F73FA200B4C4DD /* AWSWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4963629C18F73FA200B4C4DD /* AWSWorkoutViewController.m */; };
 		4963629F18F73FF800B4C4DD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4963629E18F73FF700B4C4DD /* CoreLocation.framework */; };
+		496AD37F18FF528A00C9637E /* Workouts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496AD37E18FF528A00C9637E /* Workouts.plist */; };
+		496AD38218FF531400C9637E /* AWSWorkouts.m in Sources */ = {isa = PBXBuildFile; fileRef = 496AD38118FF531400C9637E /* AWSWorkouts.m */; };
 		497259AC18F70344001420E0 /* AWSNewTimeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497259AB18F70344001420E0 /* AWSNewTimeWorkoutViewController.m */; };
 		497259AF18F70435001420E0 /* AWSNewCalorieWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497259AE18F70435001420E0 /* AWSNewCalorieWorkoutViewController.m */; };
 		497259B218F70448001420E0 /* AWSNewFreeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497259B118F70448001420E0 /* AWSNewFreeWorkoutViewController.m */; };
@@ -62,6 +64,9 @@
 		4963629B18F73FA200B4C4DD /* AWSWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSWorkoutViewController.h; sourceTree = "<group>"; };
 		4963629C18F73FA200B4C4DD /* AWSWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSWorkoutViewController.m; sourceTree = "<group>"; };
 		4963629E18F73FF700B4C4DD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		496AD37E18FF528A00C9637E /* Workouts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Workouts.plist; sourceTree = "<group>"; };
+		496AD38018FF531400C9637E /* AWSWorkouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSWorkouts.h; sourceTree = "<group>"; };
+		496AD38118FF531400C9637E /* AWSWorkouts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSWorkouts.m; sourceTree = "<group>"; };
 		497259AA18F70344001420E0 /* AWSNewTimeWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNewTimeWorkoutViewController.h; sourceTree = "<group>"; };
 		497259AB18F70344001420E0 /* AWSNewTimeWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNewTimeWorkoutViewController.m; sourceTree = "<group>"; };
 		497259AD18F70435001420E0 /* AWSNewCalorieWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNewCalorieWorkoutViewController.h; sourceTree = "<group>"; };
@@ -190,6 +195,8 @@
 				49E6A8A018F0885800F8DB92 /* AWSSettingsView.m */,
 				49F61C5F18EF445A0077E70F /* AWSVariables.h */,
 				49F61C6018EF445A0077E70F /* AWSVariables.m */,
+				496AD38018FF531400C9637E /* AWSWorkouts.h */,
+				496AD38118FF531400C9637E /* AWSWorkouts.m */,
 				49BC2B0E18EA07C50033C043 /* AWSMainViewController.h */,
 				49BC2B0F18EA07C50033C043 /* AWSMainViewController.m */,
 				49BC2B1418EA07C50033C043 /* Images.xcassets */,
@@ -206,6 +213,7 @@
 				49BC2B0518EA07C50033C043 /* main.m */,
 				49BC2B0718EA07C50033C043 /* RunTrack+-Prefix.pch */,
 				4912DAD118F59A5800C2C78B /* Settings.plist */,
+				496AD37E18FF528A00C9637E /* Workouts.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 				49BC2B0418EA07C50033C043 /* InfoPlist.strings in Resources */,
 				49008F1C18F5FFEC00B58855 /* RunTrack+ Icon App.png in Resources */,
 				49BC2B0D18EA07C50033C043 /* Main.storyboard in Resources */,
+				496AD37F18FF528A00C9637E /* Workouts.plist in Resources */,
 				49008F1D18F5FFEC00B58855 /* RunTrack+ Icon Settings.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4952E4DC18F6EEF50058BDD2 /* AWSNewDistanceWorkoutViewController.m in Sources */,
+				496AD38218FF531400C9637E /* AWSWorkouts.m in Sources */,
 				49E6A8A418F0896300F8DB92 /* AWSWeightSettingsView.m in Sources */,
 				49E6A8A118F0885800F8DB92 /* AWSSettingsView.m in Sources */,
 				497259B218F70448001420E0 /* AWSNewFreeWorkoutViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "AWSWorkoutViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "AWSVariables.h"
+#import "AWSWorkouts.h"
 
 @interface AWSWorkoutViewController () <CLLocationManagerDelegate>
 
@@ -68,6 +69,9 @@ BOOL hasGoalNotificationBeenSent;
         goal = obj.workoutGoal;
     }
     hasGoalNotificationBeenSent = NO;
+    
+    distanceTraveledNumber = 0;
+    caloriesBurned = 0;
 
     if ([typeOfWorkout isEqualToString:@"Distance"]) {
         self.navigationItem.title = @"Distance Workout";
@@ -90,7 +94,7 @@ BOOL hasGoalNotificationBeenSent;
     } else {
         [_distance setText:@"0 km"];
         [_pace setText:@"0:00/km"];
-        [_speed setText:@"0 mi/h"];
+        [_speed setText:@"0 km/h"];
         [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f km to go", goal]];
     }
     }
@@ -408,7 +412,7 @@ BOOL hasGoalNotificationBeenSent;
                     
                 }
                 self.distance.text = distanceTraveled;
-                if (currentLocation.speed > 0) {
+                if (currentLocation.speed > 0.1) {
                     if ([currentUnits isEqualToString: @"Imperial"]) {
                         self.speed.text = [NSString stringWithFormat:@"%.1f mi/h", currentLocation.speed * 2.23693629];
                     } else {
@@ -421,7 +425,6 @@ BOOL hasGoalNotificationBeenSent;
                     } else {
                         self.speed.text = [NSString stringWithFormat:@"0 km/h"];
                     }
-                    
                 }
                 
             } else if ([currentLocation distanceFromLocation:startingLocation] == 0) { // no movement
@@ -456,70 +459,79 @@ BOOL hasGoalNotificationBeenSent;
     
     float pace;
     
-    if ([currentUnits isEqualToString:@"Imperial"]) {
-        pace = 3600 / (currentLocation.speed * 2.23693629); // seconds/hour / mi/h
-        NSLog(@"pace: %.0f", pace);
-        if (pace/36000 >= 1) {
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            NSInteger hours = (ti / 3600);
-            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld/mi", (long)hours, (long)minutes, (long)seconds];
-        } else if (pace/3600 >= 1) {
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            NSInteger hours = (ti / 3600);
-            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld/mi", (long)hours, (long)minutes, (long)seconds];
-        } else if (pace/600 >= 1) { //are we talking two-digit minutes?
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld/mi", (long)minutes, (long)seconds];
-        } else if (pace/60 >= 1) { //are we talking one-digit minutes?
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld/mi", (long)minutes, (long)seconds];
-        } else if (pace > 0) { // are we talking seconds?
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            _pace.text = [NSString stringWithFormat:@"0:%02ld/mi", (long)seconds];
+    if (currentLocation.speed > 0.1) {
+        if ([currentUnits isEqualToString:@"Imperial"]) {
+            pace = 3600 / (currentLocation.speed * 2.23693629); // seconds/hour / mi/h
+            NSLog(@"pace: %.0f", pace);
+            if (pace/36000 >= 1) {
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                _pace.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld/mi", (long)hours, (long)minutes, (long)seconds];
+            } else if (pace/3600 >= 1) {
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                _pace.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld/mi", (long)hours, (long)minutes, (long)seconds];
+            } else if (pace/600 >= 1) { //are we talking two-digit minutes?
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                _pace.text = [NSString stringWithFormat:@"%02ld:%02ld/mi", (long)minutes, (long)seconds];
+            } else if (pace/60 >= 1) { //are we talking one-digit minutes?
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                _pace.text = [NSString stringWithFormat:@"%1ld:%02ld/mi", (long)minutes, (long)seconds];
+            } else if (pace > 0) { // are we talking seconds?
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                _pace.text = [NSString stringWithFormat:@"0:%02ld/mi", (long)seconds];
+            }
+        } else {
+            pace = 3600 / (currentLocation.speed * 3.6); // seconds/hour / km/h
+            if (pace/36000 >= 1) {
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                _pace.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld/km", (long)hours, (long)minutes, (long)seconds];
+            } else if (pace/3600 >= 1) {
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                NSInteger hours = (ti / 3600);
+                _pace.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld/km", (long)hours, (long)minutes, (long)seconds];
+            } else if (pace/600 >= 1) { //are we talking two-digit minutes?
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                _pace.text = [NSString stringWithFormat:@"%02ld:%02ld/km", (long)minutes, (long)seconds];
+            } else if (pace/60 >= 1) { //are we talking one-digit minutes?
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                NSInteger minutes = (ti / 60) % 60;
+                _pace.text = [NSString stringWithFormat:@"%1ld:%02ld/km", (long)minutes, (long)seconds];
+            } else if (pace > 0) { // are we talking seconds?
+                NSInteger ti = (NSInteger)pace;
+                NSInteger seconds = ti % 60;
+                _pace.text = [NSString stringWithFormat:@"0:%02ld/km", (long)seconds];
+            }
         }
+    
     } else {
-        pace = 3600 / (currentLocation.speed * 3.6); // seconds/hour / km/h
-        if (pace/36000 >= 1) {
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            NSInteger hours = (ti / 3600);
-            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld/km", (long)hours, (long)minutes, (long)seconds];
-        } else if (pace/3600 >= 1) {
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            NSInteger hours = (ti / 3600);
-            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld:%02ld/km", (long)hours, (long)minutes, (long)seconds];
-        } else if (pace/600 >= 1) { //are we talking two-digit minutes?
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            _pace.text = [NSString stringWithFormat:@"%02ld:%02ld/km", (long)minutes, (long)seconds];
-        } else if (pace/60 >= 1) { //are we talking one-digit minutes?
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            NSInteger minutes = (ti / 60) % 60;
-            _pace.text = [NSString stringWithFormat:@"%1ld:%02ld/km", (long)minutes, (long)seconds];
-        } else if (pace > 0) { // are we talking seconds?
-            NSInteger ti = (NSInteger)pace;
-            NSInteger seconds = ti % 60;
-            _pace.text = [NSString stringWithFormat:@"0:%02ld/km", (long)seconds];
-        }
+        _pace.text = [NSString stringWithFormat:@"N/A"];
     }
-    
-    
     
     
 }
 
+- (IBAction)endWorkout:(id)sender {
+    AWSWorkouts *workoutsObj = [[AWSWorkouts alloc] init];
+    [workoutsObj updatePastWorkouts:typeOfWorkout :goal :distanceTraveledNumber :secondsSinceWorkoutStart :caloriesBurned];
+    [manager stopUpdatingLocation];
+    manager = nil;
+}
 @end
