@@ -38,7 +38,7 @@
     return self;
 }
 
--(void) updatePastWorkouts:(NSString *)workoutType :(float)goal :(float)distance :(float)time :(float)calories
+-(void) updatePastWorkouts:(NSString *)workoutType :(float)goal :(float)distance :(float)time :(float)calories :(NSDate *)startDate :(NSDate *)endDate
 {
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"Workouts.plist"];
@@ -74,8 +74,8 @@
     NSString *workoutTypeString = [NSString stringWithFormat:@"%@", workoutType];
     NSString *timeString = [NSString stringWithFormat:@"%.0f", time - 0.9];
     NSString *caloriesString = [NSString stringWithFormat:@"%.0f", calories];
-    NSArray *workoutObjects = [NSArray arrayWithObjects:workoutTypeString, goalString, distanceString, timeString, caloriesString, nil];
-    NSArray *workoutKeys = [NSArray arrayWithObjects:@"Type of Workout", @"Goal", @"Distance", @"Time", @"Calories", nil];
+    NSArray *workoutObjects = [NSArray arrayWithObjects:workoutTypeString, goalString, distanceString, timeString, caloriesString, startDate, endDate, nil];
+    NSArray *workoutKeys = [NSArray arrayWithObjects:@"Type of Workout", @"Goal", @"Distance", @"Time", @"Calories", @"Start Date", @"End Date", nil];
     NSDictionary *workoutDictionary = [NSDictionary dictionaryWithObjects: workoutObjects forKeys:workoutKeys];
     for (id key in workoutDictionary) {
         NSLog(@"Key:%@, Object: %@", key, [workoutDictionary objectForKey:key]);

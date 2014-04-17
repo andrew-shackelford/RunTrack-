@@ -531,7 +531,8 @@ BOOL hasGoalNotificationBeenSent;
 
 - (IBAction)endWorkout:(id)sender {
     AWSWorkouts *workoutsObj = [[AWSWorkouts alloc] init];
-    [workoutsObj updatePastWorkouts:typeOfWorkout :goal :distanceTraveledNumber :secondsSinceWorkoutStart :caloriesBurned];
+    NSDate *endDate = [NSDate date];
+    [workoutsObj updatePastWorkouts:typeOfWorkout :goal :distanceTraveledNumber :secondsSinceWorkoutStart :caloriesBurned :workoutStartDate :endDate];
     [manager stopUpdatingLocation];
     manager = nil;
     AWSItemStore *itemStoreObj = [[AWSItemStore alloc] init];

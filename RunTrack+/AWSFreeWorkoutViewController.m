@@ -371,7 +371,7 @@ float weight;
 - (IBAction)endWorkout:(id)sender {
     AWSWorkouts *workoutsObj = [[AWSWorkouts alloc] init];
     float zero = [[NSNumber numberWithInt:0] floatValue];
-    [workoutsObj updatePastWorkouts:typeOfWorkout :zero :distanceTraveledNumber :secondsSinceWorkoutStart :caloriesBurned];
+    [workoutsObj updatePastWorkouts:typeOfWorkout :zero :distanceTraveledNumber :secondsSinceWorkoutStart :caloriesBurned :workoutStartDate :[NSDate date]];
     [manager stopUpdatingLocation];
     manager = nil;
     AWSItemStore *itemStoreObj = [[AWSItemStore alloc] init];

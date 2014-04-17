@@ -16,6 +16,7 @@
 @synthesize settings;
 @synthesize typeOfWorkout;
 @synthesize workoutGoal;
+@synthesize cellTapped;
 
 
 - (id) init
@@ -48,6 +49,7 @@
         
         typeOfWorkout = [settings objectForKey:@"typeOfWorkout"];
         workoutGoal = [[settings objectForKey:@"workoutGoal"] floatValue];
+        cellTapped = [[settings objectForKey:@"cellTapped"] intValue];
     }
     
     return self;
@@ -129,6 +131,14 @@
     [settings writeToFile:destPath atomically:YES];
 }
 
+-(void)updateCellTapped:(int)cellNumber
+{
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"Settings.plist"];
+    settings = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
+    [settings setValue:[NSNumber numberWithInt:cellNumber]  forKey:@"cellTapped"];
+    [settings writeToFile:destPath atomically:YES];
+}
 
 
 @end

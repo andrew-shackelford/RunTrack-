@@ -11,6 +11,6 @@
 
 @interface AWSWorkoutTableViewController : UITableViewController
 
-
+@property (readwrite, nonatomic) int cellTapped;
 
 @end

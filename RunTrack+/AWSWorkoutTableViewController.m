@@ -12,6 +12,8 @@
 
 @implementation AWSWorkoutTableViewController
 
+@synthesize cellTapped;
+
 - (instancetype)init
 {
     // Call the superclass's designated initializer
@@ -75,8 +77,18 @@
     }
     cell.textLabel.text = distanceLabel;
     cell.detailTextLabel.text = timeLabel;
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    AWSVariables *obj2 = [[AWSVariables alloc] init];
+    int row = [[NSNumber numberWithInteger:indexPath.row] intValue];
+    [obj2 updateCellTapped:row];
+    [self performSegueWithIdentifier:@"Accessory" sender:self];
+}
+
 
 @end
