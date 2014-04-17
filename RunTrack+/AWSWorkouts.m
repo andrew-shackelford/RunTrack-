@@ -56,14 +56,14 @@
     } else {
         if ([currentUnits isEqualToString:@"Distance"]) {
             if ([workoutType isEqualToString:@"Free"] == NO) {
-                goalString = [NSString stringWithFormat:@"%.1f", goal*1.60934];
+                goalString = [NSString stringWithFormat:@"%.1f", goal*0.621371];
             }
         } else {
             if ([workoutType isEqualToString:@"Free"] == NO) {
                 goalString = [NSString stringWithFormat:@"%.1f", goal];
             }
         }
-        distanceString = [NSString stringWithFormat:@"%.2f", distance*1.60934];
+        distanceString = [NSString stringWithFormat:@"%.2f", distance*0.621371];
     }
     if ([workoutType isEqualToString:@"Time"]) {
         goalString = [NSString stringWithFormat:@"%.0f", goal];
@@ -72,7 +72,7 @@
         goalString = @"None";
     }
     NSString *workoutTypeString = [NSString stringWithFormat:@"%@", workoutType];
-    NSString *timeString = [NSString stringWithFormat:@"%.0f", time];
+    NSString *timeString = [NSString stringWithFormat:@"%.0f", time - 0.9];
     NSString *caloriesString = [NSString stringWithFormat:@"%.0f", calories];
     NSArray *workoutObjects = [NSArray arrayWithObjects:workoutTypeString, goalString, distanceString, timeString, caloriesString, nil];
     NSArray *workoutKeys = [NSArray arrayWithObjects:@"Type of Workout", @"Goal", @"Distance", @"Time", @"Calories", nil];

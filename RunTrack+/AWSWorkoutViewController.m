@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AWSVariables.h"
 #import "AWSWorkouts.h"
+#import "AWSItemStore.h"
 
 @interface AWSWorkoutViewController () <CLLocationManagerDelegate>
 
@@ -533,5 +534,7 @@ BOOL hasGoalNotificationBeenSent;
     [workoutsObj updatePastWorkouts:typeOfWorkout :goal :distanceTraveledNumber :secondsSinceWorkoutStart :caloriesBurned];
     [manager stopUpdatingLocation];
     manager = nil;
+    AWSItemStore *itemStoreObj = [[AWSItemStore alloc] init];
+    [itemStoreObj workoutJustEnded];
 }
 @end

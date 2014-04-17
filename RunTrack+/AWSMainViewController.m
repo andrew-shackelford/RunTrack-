@@ -26,7 +26,7 @@
     
     AWSWorkouts *workoutsObj = [[AWSWorkouts alloc] init];
     NSArray *workouts = workoutsObj.workouts;
-    NSLog(@"Count is %ld", [workouts count]);
+    NSLog(@"Count is %ld", (long)[workouts count]);
     NSLog(@"%@", workouts);
 }
 

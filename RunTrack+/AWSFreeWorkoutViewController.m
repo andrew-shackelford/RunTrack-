@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AWSVariables.h"
 #import "AWSWorkouts.h"
+#import "AWSItemStore.h"
 
 @interface AWSFreeWorkoutViewController () <CLLocationManagerDelegate>
 
@@ -242,9 +243,7 @@ float weight;
                     distanceTraveledNumber = distanceRecentlyTraveledNumberUnits + distanceTraveledNumber;
                     if ([currentUnits isEqualToString:@"Imperial"]) {
                         distanceTraveled = [NSString stringWithFormat:@"%.2f mi", distanceTraveledNumber];
-                        }
                         caloriesBurned = 0.75 * weight * distanceTraveledNumber;
-                        
                     } else {
                         distanceTraveled = [NSString stringWithFormat:@"%.2f km", distanceTraveledNumber];
                         caloriesBurned = 0.75 * weight * distanceTraveledNumber * 2.20462 * 0.621371;
@@ -365,7 +364,7 @@ float weight;
         _pace.text = [NSString stringWithFormat:@"N/A"];
     }
     
-    
+    }
     
 }
 
@@ -375,6 +374,8 @@ float weight;
     [workoutsObj updatePastWorkouts:typeOfWorkout :zero :distanceTraveledNumber :secondsSinceWorkoutStart :caloriesBurned];
     [manager stopUpdatingLocation];
     manager = nil;
+    AWSItemStore *itemStoreObj = [[AWSItemStore alloc] init];
+    [itemStoreObj workoutJustEnded];
 }
 
 

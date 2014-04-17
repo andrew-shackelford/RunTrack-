@@ -4,6 +4,8 @@
 <dict>
 	<key>Weight</key>
 	<integer>150</integer>
+	<key>newWorkoutWasCreated</key>
+	<false/>
 	<key>Units</key>
 	<string>Imperial</string>
 	<key>typeOfWorkout</key>
