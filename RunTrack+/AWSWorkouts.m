@@ -8,6 +8,7 @@
 
 #import "AWSWorkouts.h"
 #import "AWSVariables.h"
+#import "AWSWorkoutTableViewController.h"
 
 @implementation AWSWorkouts
 
@@ -84,5 +85,15 @@
     [workouts writeToFile:destPath atomically:YES];
 }
 
+-(void) deleteWorkout:(int)workoutNumber
+{
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"Workouts.plist"];
+    workouts = [[NSMutableArray alloc] initWithContentsOfFile:destPath];
+    [workouts removeObjectAtIndex:[[NSNumber numberWithInt:workoutNumber] integerValue]];
+    [workouts writeToFile:destPath atomically:YES];
+    AWSWorkoutTableViewController *workoutTableViewObj = [[AWSWorkoutTableViewController alloc] init];
+    [workoutTableViewObj reloadTableViewData];
+}
 
 @end

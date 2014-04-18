@@ -13,4 +13,6 @@
 
 @property (readwrite, nonatomic) int cellTapped;
 
+-(void)reloadTableViewData;
+
 @end

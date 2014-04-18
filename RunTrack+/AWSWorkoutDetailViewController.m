@@ -18,7 +18,7 @@
 
 @implementation AWSWorkoutDetailViewController
 
-int cellTapped;
+int rowSelected;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +38,7 @@ int cellTapped;
     self.navigationItem.title = @"Workout Details";
     AWSVariables *obj = [[AWSVariables alloc] init];
     NSString *currentUnits = obj.units;
-    int rowSelected = obj.cellTapped;
+    rowSelected = obj.cellTapped;
     NSArray *items = [[AWSItemStore sharedStore] allItems];
     NSDictionary *item = items[rowSelected];
     NSString *distanceLabel;
@@ -84,7 +84,7 @@ int cellTapped;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSLocale *posix = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     [formatter setLocale:posix];
-    [formatter setDateFormat:@"M/d/yy hh:mm:ss a"];
+    [formatter setDateFormat:@"M/d/yy h:mm:ss a"];
     NSString *startTimeLabel = [formatter stringFromDate:[item objectForKey:@"Start Date"]];
     NSString *endTimeLabel = [formatter stringFromDate:[item objectForKey:@"End Date"]];
     _startTime.text = startTimeLabel;
@@ -110,4 +110,10 @@ int cellTapped;
 }
 */
 
+- (IBAction)deleteWorkout:(id)sender {
+    AWSWorkouts *workoutsObj2 = [[AWSWorkouts alloc] init];
+    [workoutsObj2 deleteWorkout:rowSelected];
+    AWSItemStore *itemsObj2 = [[AWSItemStore alloc] init];
+    [itemsObj2 workoutJustEnded];
+}
 @end

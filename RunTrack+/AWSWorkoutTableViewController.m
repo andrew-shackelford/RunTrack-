@@ -26,6 +26,11 @@
     return [self init];
 }
 
+- (void) reloadTableViewData
+{
+    [self.tableView reloadData];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[[AWSItemStore sharedStore] allItems] count];

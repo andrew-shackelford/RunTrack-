@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *calories;
 @property (weak, nonatomic) IBOutlet UILabel *endTime;
 
+- (IBAction)deleteWorkout:(id)sender;
+
 @end
