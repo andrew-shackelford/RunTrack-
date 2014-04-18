@@ -60,6 +60,8 @@ float weight;
     currentUnits = obj.units;
     typeOfWorkout = obj.typeOfWorkout;
 
+    distanceTraveledNumber = 0;
+    caloriesBurned = 0;
     
     if ([typeOfWorkout isEqualToString:@"Distance"]) {
         self.navigationItem.title = @"Distance Workout";
@@ -362,6 +364,11 @@ float weight;
         }
     } else {
         _pace.text = [NSString stringWithFormat:@"N/A"];
+        if ([currentUnits isEqualToString:@"Imperial"]) {
+            _speed.text = [NSString stringWithFormat:@"0 mi/h"];
+        } else {
+            _speed.text = [NSString stringWithFormat:@"0 km/h"];
+        }
     }
     
     }

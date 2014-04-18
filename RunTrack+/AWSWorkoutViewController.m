@@ -524,6 +524,11 @@ BOOL hasGoalNotificationBeenSent;
     
     } else {
         _pace.text = [NSString stringWithFormat:@"N/A"];
+        if ([currentUnits isEqualToString:@"Imperial"]) {
+            _speed.text = [NSString stringWithFormat:@"0 mi/h"];
+        } else {
+            _speed.text = [NSString stringWithFormat:@"0 km/h"];
+        }
     }
     
     
