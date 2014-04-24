@@ -9,16 +9,41 @@
 #import "AWSWorkoutTableViewController.h"
 #import "AWSItemStore.h"
 #import "AWSVariables.h"
+#import "AWSItemCell.h"
 
 @implementation AWSWorkoutTableViewController
 
 @synthesize cellTapped;
+
+-(void)viewDidLoad
+{
+    AWSVariables *obj = [[AWSVariables alloc] init];
+    NSLog(@"%@", obj.units);
+    
+    BOOL appOpened = obj.appHasBeenOpened;
+    if (!appOpened) {
+        UIAlertView *settingsAlert = [[UIAlertView alloc] initWithTitle:@"Settings" message:[NSString stringWithFormat:@"Go to settings to set your weight and preferred units"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Settings", nil];
+        [settingsAlert show];
+        appOpened = YES;
+        [obj updateAppOpened:YES];
+        NSLog(@"app has not been opened");
+    } else {
+        NSLog(@"app has been opened");
+    }
+    
+    UINib *nib = [UINib nibWithNibName:@"AWSItemCell" bundle:nil];
+    
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"AWSItemCell"];
+    
+}
 
 - (instancetype)init
 {
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStylePlain];
     return self;
+    
+    
 }
 
 - (instancetype)initWithStyle:(UITableViewStyle)style
@@ -38,7 +63,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
+    AWSItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AWSItemCell" forIndexPath:indexPath];
     
     NSArray *items = [[AWSItemStore sharedStore] allItems];
     NSDictionary *item = items[indexPath.row];
@@ -80,8 +105,14 @@
         NSInteger seconds = ti % 60;
         timeLabel = [NSString stringWithFormat:@"0:%02ld", (long)seconds];
     }
-    cell.textLabel.text = distanceLabel;
-    cell.detailTextLabel.text = timeLabel;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *posix = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:posix];
+    [formatter setDateFormat:@"M/d/yy"];
+    NSString *startDateLabel = [formatter stringFromDate:[item objectForKey:@"Start Date"]];
+    cell.distance.text = distanceLabel;
+    cell.time.text = timeLabel;
+    cell.date.text = startDateLabel;
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     return cell;
@@ -93,6 +124,12 @@
     int row = [[NSNumber numberWithInteger:indexPath.row] intValue];
     [obj2 updateCellTapped:row];
     [self performSegueWithIdentifier:@"Accessory" sender:self];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [self performSegueWithIdentifier:@"Settings" sender:self];
+    }
 }
 
 

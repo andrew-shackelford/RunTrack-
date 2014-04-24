@@ -8,6 +8,8 @@
 
 #import "AWSFlipsideViewController.h"
 
-@interface AWSMainViewController : UIViewController <AWSFlipsideViewControllerDelegate>
+@interface AWSMainViewController : UIViewController <AWSFlipsideViewControllerDelegate> {
+    
+}
 
 @end

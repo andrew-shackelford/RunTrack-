@@ -21,13 +21,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    AWSVariables *obj = [[AWSVariables alloc] init];
-    NSLog(@"%@", obj.units);
-    
-    AWSWorkouts *workoutsObj = [[AWSWorkouts alloc] init];
-    NSArray *workouts = workoutsObj.workouts;
-    NSLog(@"Count is %ld", (long)[workouts count]);
-    NSLog(@"%@", workouts);
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,5 +42,7 @@
         [[segue destinationViewController] setDelegate:self];
     }
 }
+
+
 
 @end

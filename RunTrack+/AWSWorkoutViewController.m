@@ -11,6 +11,7 @@
 #import "AWSVariables.h"
 #import "AWSWorkouts.h"
 #import "AWSItemStore.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface AWSWorkoutViewController () <CLLocationManagerDelegate>
 
@@ -228,7 +229,9 @@ BOOL hasGoalNotificationBeenSent;
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"sms-received" ofType:@"wav"];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
     NSLog(@"Old Location: %@", oldLocation);
     NSLog(@"New Location: %@", newLocation);
     
@@ -326,10 +329,22 @@ BOOL hasGoalNotificationBeenSent;
                 NSInteger seconds = ti % 60;
                 goalString = [NSString stringWithFormat:@"0:%02ld", (long)seconds];
             }
-            UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %@ time ran!", goalString] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [goalReached show];
-            [_stuffToGoal setText:@"Goal reached"];
-            hasGoalNotificationBeenSent = YES;
+            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %@ time ran!", goalString] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [goalReached show];
+                [_stuffToGoal setText:@"Goal reached"];
+                hasGoalNotificationBeenSent = YES;
+                AudioServicesPlaySystemSound (soundID);
+            } else {
+                UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                localNotification.fireDate = [NSDate date];
+                localNotification.alertBody = [NSString stringWithFormat:@"You have reached your goal!"];
+                localNotification.soundName = UILocalNotificationDefaultSoundName;
+                localNotification.applicationIconBadgeNumber = 0;
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                hasGoalNotificationBeenSent = YES;
+                [_stuffToGoal setText:@"Goal reached"];
+            }
         }
     }
     
@@ -364,10 +379,22 @@ BOOL hasGoalNotificationBeenSent;
                                 goalToGo = goal - distanceTraveledNumber;
                                 [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f mi to go", goalToGo]];
                             } else if (hasGoalNotificationBeenSent == NO) {
-                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.1f mi!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                [goalReached show];
-                                [_stuffToGoal setText:@"Goal reached"];
-                                hasGoalNotificationBeenSent = YES;
+                                if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                                    UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.1f mi!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                    [goalReached show];
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                    hasGoalNotificationBeenSent = YES;
+                                    AudioServicesPlaySystemSound (soundID);
+                                } else {
+                                    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                                    localNotification.fireDate = [NSDate date];
+                                    localNotification.alertBody = [NSString stringWithFormat:@"You have reached your goal!"];
+                                    localNotification.soundName = UILocalNotificationDefaultSoundName;
+                                    localNotification.applicationIconBadgeNumber = 0;
+                                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                                    hasGoalNotificationBeenSent = YES;
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                }
                             }
                         }
                         caloriesBurned = 0.75 * weight * distanceTraveledNumber;
@@ -376,10 +403,22 @@ BOOL hasGoalNotificationBeenSent;
                                 goalToGo = goal - caloriesBurned;
                                 [_stuffToGoal setText:[NSString stringWithFormat:@"%.0f calories to burn", goalToGo]];
                             } else if (hasGoalNotificationBeenSent == NO) {
-                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.0f calories burned!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                [goalReached show];
-                                [_stuffToGoal setText:@"Goal reached"];
-                                hasGoalNotificationBeenSent = YES;
+                                if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                                    UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.0f calories burned!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                    [goalReached show];
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                    hasGoalNotificationBeenSent = YES;
+                                    AudioServicesPlaySystemSound (soundID);
+                                } else {
+                                    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                                    localNotification.fireDate = [NSDate date];
+                                    localNotification.alertBody = [NSString stringWithFormat:@"You have reached your goal!"];
+                                    localNotification.soundName = UILocalNotificationDefaultSoundName;
+                                    localNotification.applicationIconBadgeNumber = 0;
+                                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                                    hasGoalNotificationBeenSent = YES;
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                }
                             }
                         }
                         
@@ -390,10 +429,22 @@ BOOL hasGoalNotificationBeenSent;
                             goalToGo = goal - distanceTraveledNumber;
                             [_stuffToGoal setText:[NSString stringWithFormat:@"%.2f km to go", goalToGo]];
                             } else if (hasGoalNotificationBeenSent == NO) {
-                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.1f km!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                [goalReached show];
-                                [_stuffToGoal setText:@"Goal reached"];
-                                hasGoalNotificationBeenSent = YES;
+                                if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                                    UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.1f km!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                    [goalReached show];
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                    hasGoalNotificationBeenSent = YES;
+                                    AudioServicesPlaySystemSound (soundID);
+                                } else {
+                                    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                                    localNotification.fireDate = [NSDate date];
+                                    localNotification.alertBody = [NSString stringWithFormat:@"You have reached your goal!"];
+                                    localNotification.soundName = UILocalNotificationDefaultSoundName;
+                                    localNotification.applicationIconBadgeNumber = 0;
+                                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                                    hasGoalNotificationBeenSent = YES;
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                }
                             }
                         }
                         caloriesBurned = 0.75 * weight * distanceTraveledNumber * 2.20462 * 0.621371;
@@ -402,10 +453,22 @@ BOOL hasGoalNotificationBeenSent;
                                 goalToGo = goal - caloriesBurned;
                                 [_stuffToGoal setText:[NSString stringWithFormat:@"%.0f calories to burn", goalToGo]];
                             } else if (hasGoalNotificationBeenSent == NO) {
-                                UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.0f calories burned!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                [goalReached show];
-                                [_stuffToGoal setText:@"Goal reached"];
-                                hasGoalNotificationBeenSent = YES;
+                                if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                                    UIAlertView *goalReached = [[UIAlertView alloc] initWithTitle:@"Goal Reached" message:[NSString stringWithFormat:@"Congratulations! You reached your goal of %.0f calories burned!", goal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                    [goalReached show];
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                    hasGoalNotificationBeenSent = YES;
+                                    AudioServicesPlaySystemSound (soundID);
+                                } else {
+                                    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                                    localNotification.fireDate = [NSDate date];
+                                    localNotification.alertBody = [NSString stringWithFormat:@"You have reached your goal!"];
+                                    localNotification.soundName = UILocalNotificationDefaultSoundName;
+                                    localNotification.applicationIconBadgeNumber = 0;
+                                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                                    hasGoalNotificationBeenSent = YES;
+                                    [_stuffToGoal setText:@"Goal reached"];
+                                }
                             }
                         }
                     }

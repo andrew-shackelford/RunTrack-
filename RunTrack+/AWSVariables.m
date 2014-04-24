@@ -17,6 +17,7 @@
 @synthesize typeOfWorkout;
 @synthesize workoutGoal;
 @synthesize cellTapped;
+@synthesize appHasBeenOpened;
 
 
 - (id) init
@@ -50,6 +51,7 @@
         typeOfWorkout = [settings objectForKey:@"typeOfWorkout"];
         workoutGoal = [[settings objectForKey:@"workoutGoal"] floatValue];
         cellTapped = [[settings objectForKey:@"cellTapped"] intValue];
+        appHasBeenOpened = [[settings objectForKey:@"appHasBeenOpened"] boolValue];
     }
     
     return self;
@@ -137,6 +139,21 @@
     destPath = [destPath stringByAppendingPathComponent:@"Settings.plist"];
     settings = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
     [settings setValue:[NSNumber numberWithInt:cellNumber]  forKey:@"cellTapped"];
+    [settings writeToFile:destPath atomically:YES];
+}
+
+-(void)updateAppOpened:(BOOL)isAppOpened
+{
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"Settings.plist"];
+    settings = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
+    if (isAppOpened) {
+        NSLog(@"Hi");
+        [settings setValue:[NSNumber numberWithBool:YES]  forKey:@"appHasBeenOpened"];
+    } else {
+        NSLog(@"Hey");
+        [settings setValue:[NSNumber numberWithBool:NO]  forKey:@"appHasBeenOpened"];
+    }
     [settings writeToFile:destPath atomically:YES];
 }
 

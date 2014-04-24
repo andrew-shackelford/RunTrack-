@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UITableViewCell" id="5SC-Xr-Pos">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AWSItemCell" id="5SC-Xr-Pos">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5SC-Xr-Pos" id="7V8-ld-3Yk">
@@ -31,7 +31,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="GU3-PV-PU3">
                             <color key="tintColor" red="0.8980392157" green="0.32156862749999998" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="toJ-oK-dmc" kind="modal" id="g2h-qE-Uzq"/>
+                                <segue destination="toJ-oK-dmc" kind="modal" identifier="Settings" id="g2h-qE-Uzq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="lMW-Sj-ybe">

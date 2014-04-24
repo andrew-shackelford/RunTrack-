@@ -21,6 +21,10 @@
 		497259AC18F70344001420E0 /* AWSNewTimeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497259AB18F70344001420E0 /* AWSNewTimeWorkoutViewController.m */; };
 		497259AF18F70435001420E0 /* AWSNewCalorieWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497259AE18F70435001420E0 /* AWSNewCalorieWorkoutViewController.m */; };
 		497259B218F70448001420E0 /* AWSNewFreeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497259B118F70448001420E0 /* AWSNewFreeWorkoutViewController.m */; };
+		4976A514190864B200C75598 /* AWSItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4976A513190864B200C75598 /* AWSItemCell.m */; };
+		4976A5161908650500C75598 /* AWSItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4976A5151908650500C75598 /* AWSItemCell.xib */; };
+		499112491907F4330058E634 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499112481907F4330058E634 /* AudioToolbox.framework */; };
+		49A5399F1908A54F00A3B1BF /* sms-received.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49A5399E1908A54F00A3B1BF /* sms-received.wav */; };
 		49BC2AFA18EA07C50033C043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC2AF918EA07C50033C043 /* Foundation.framework */; };
 		49BC2AFC18EA07C50033C043 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC2AFB18EA07C50033C043 /* CoreGraphics.framework */; };
 		49BC2AFE18EA07C50033C043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC2AFD18EA07C50033C043 /* UIKit.framework */; };
@@ -78,6 +82,11 @@
 		497259AE18F70435001420E0 /* AWSNewCalorieWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNewCalorieWorkoutViewController.m; sourceTree = "<group>"; };
 		497259B018F70448001420E0 /* AWSNewFreeWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNewFreeWorkoutViewController.h; sourceTree = "<group>"; };
 		497259B118F70448001420E0 /* AWSNewFreeWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNewFreeWorkoutViewController.m; sourceTree = "<group>"; };
+		4976A512190864B200C75598 /* AWSItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSItemCell.h; sourceTree = "<group>"; };
+		4976A513190864B200C75598 /* AWSItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSItemCell.m; sourceTree = "<group>"; };
+		4976A5151908650500C75598 /* AWSItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AWSItemCell.xib; sourceTree = "<group>"; };
+		499112481907F4330058E634 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		49A5399E1908A54F00A3B1BF /* sms-received.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sms-received.wav"; sourceTree = "<group>"; };
 		49BC2AF618EA07C40033C043 /* RunTrack+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RunTrack+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BC2AF918EA07C50033C043 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49BC2AFB18EA07C50033C043 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499112491907F4330058E634 /* AudioToolbox.framework in Frameworks */,
 				49BC2AFC18EA07C50033C043 /* CoreGraphics.framework in Frameworks */,
 				49BC2AFE18EA07C50033C043 /* UIKit.framework in Frameworks */,
 				49BC2AFA18EA07C50033C043 /* Foundation.framework in Frameworks */,
@@ -143,6 +153,7 @@
 		49BC2AED18EA07C40033C043 = {
 			isa = PBXGroup;
 			children = (
+				49A5399E1908A54F00A3B1BF /* sms-received.wav */,
 				49008F1918F5FFEC00B58855 /* RunTrack+ Icon App.png */,
 				49008F1A18F5FFEC00B58855 /* RunTrack+ Icon Settings.png */,
 				49008F1B18F5FFEC00B58855 /* RunTrack+ Icon Spotlight.png */,
@@ -165,6 +176,7 @@
 		49BC2AF818EA07C50033C043 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				499112481907F4330058E634 /* AudioToolbox.framework */,
 				4963629E18F73FF700B4C4DD /* CoreLocation.framework */,
 				49BC2AF918EA07C50033C043 /* Foundation.framework */,
 				49BC2AFB18EA07C50033C043 /* CoreGraphics.framework */,
@@ -212,6 +224,9 @@
 				49F61C6018EF445A0077E70F /* AWSVariables.m */,
 				496AD38018FF531400C9637E /* AWSWorkouts.h */,
 				496AD38118FF531400C9637E /* AWSWorkouts.m */,
+				4976A512190864B200C75598 /* AWSItemCell.h */,
+				4976A513190864B200C75598 /* AWSItemCell.m */,
+				4976A5151908650500C75598 /* AWSItemCell.xib */,
 				49BC2B0E18EA07C50033C043 /* AWSMainViewController.h */,
 				49BC2B0F18EA07C50033C043 /* AWSMainViewController.m */,
 				49BC2B1418EA07C50033C043 /* Images.xcassets */,
@@ -334,6 +349,8 @@
 				49BC2B0418EA07C50033C043 /* InfoPlist.strings in Resources */,
 				49008F1C18F5FFEC00B58855 /* RunTrack+ Icon App.png in Resources */,
 				49BC2B0D18EA07C50033C043 /* Main.storyboard in Resources */,
+				4976A5161908650500C75598 /* AWSItemCell.xib in Resources */,
+				49A5399F1908A54F00A3B1BF /* sms-received.wav in Resources */,
 				496AD37F18FF528A00C9637E /* Workouts.plist in Resources */,
 				49008F1D18F5FFEC00B58855 /* RunTrack+ Icon Settings.png in Resources */,
 			);
@@ -364,6 +381,7 @@
 				497259AC18F70344001420E0 /* AWSNewTimeWorkoutViewController.m in Sources */,
 				49BFD9E918F6CF460063BFD9 /* AWSFlipsideViewController.m in Sources */,
 				49BC2B0A18EA07C50033C043 /* AWSAppDelegate.m in Sources */,
+				4976A514190864B200C75598 /* AWSItemCell.m in Sources */,
 				49F61C6118EF445A0077E70F /* AWSVariables.m in Sources */,
 				49BC2B0618EA07C50033C043 /* main.m in Sources */,
 				4963629D18F73FA200B4C4DD /* AWSWorkoutViewController.m in Sources */,

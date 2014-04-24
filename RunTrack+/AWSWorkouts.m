@@ -73,7 +73,7 @@
         goalString = @"None";
     }
     NSString *workoutTypeString = [NSString stringWithFormat:@"%@", workoutType];
-    NSString *timeString = [NSString stringWithFormat:@"%.0f", time - 0.9];
+    NSString *timeString = [NSString stringWithFormat:@"%.0f", time - 0.5];
     NSString *caloriesString = [NSString stringWithFormat:@"%.0f", calories];
     NSArray *workoutObjects = [NSArray arrayWithObjects:workoutTypeString, goalString, distanceString, timeString, caloriesString, startDate, endDate, nil];
     NSArray *workoutKeys = [NSArray arrayWithObjects:@"Type of Workout", @"Goal", @"Distance", @"Time", @"Calories", @"Start Date", @"End Date", nil];
