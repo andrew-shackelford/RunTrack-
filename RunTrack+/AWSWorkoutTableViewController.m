@@ -22,7 +22,7 @@
     
     BOOL appOpened = obj.appHasBeenOpened;
     if (!appOpened) {
-        UIAlertView *settingsAlert = [[UIAlertView alloc] initWithTitle:@"Settings" message:[NSString stringWithFormat:@"Go to settings to set your weight and preferred units"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Settings", nil];
+        UIAlertView *settingsAlert = [[UIAlertView alloc] initWithTitle:@"Settings" message:[NSString stringWithFormat:@"Go to settings to set your weight and preferred measurement system"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Settings", nil];
         [settingsAlert show];
         appOpened = YES;
         [obj updateAppOpened:YES];
